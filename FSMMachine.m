@@ -1,7 +1,7 @@
 #import "FSMMachine.h"
 
 @interface FSMMachine()
-@property (nonatomic, strong) NSString* state;
+@property (nonatomic, readwrite, strong) NSString* state;
 @property (nonatomic, strong) NSMutableDictionary* transitions;
 @end
 

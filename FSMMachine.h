@@ -1,9 +1,9 @@
 @class FSMState;
 
 @interface FSMMachine : NSObject
-@property (nonatomic, readonly, strong) NSString* state;
-- (id)initWithState:(NSString*)state;
-- (void)addTransition:(NSString*)event startState:(NSString*)startState endState:(NSString*)endState;
-- (void)applyEvent:(NSString*)event;
-- (BOOL)isInState:(NSString*)state;
+@property (nonatomic, readonly, strong) const NSString* state;
+- (id)initWithState:(const NSString*)state;
+- (void)addTransition:(const NSString*)event startState:(const NSString*)startState endState:(const NSString*)endState;
+- (void)applyEvent:(const NSString*)event;
+- (BOOL)isInState:(const NSString*)state;
 @end

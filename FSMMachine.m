@@ -1,7 +1,7 @@
 #import "FSMMachine.h"
 
 @interface FSMMachine()
-@property (nonatomic, readwrite, strong) NSString* state;
+@property (nonatomic, readwrite, strong) const NSString* state;
 @property (nonatomic, strong) NSMutableDictionary* transitions;
 @end
 
@@ -9,7 +9,7 @@
 @synthesize state = _state;
 @synthesize transitions;
 
-- (id)initWithState:(NSString*)state {
+- (id)initWithState:(const NSString*)state {
     self = [super init];
     
     if (self) {
@@ -20,7 +20,7 @@
     return self;
 }
 
-- (void)addTransition:(NSString*)event startState:(NSString*)startState endState:(NSString*)endState {    
+- (void)addTransition:(const NSString*)event startState:(const NSString*)startState endState:(const NSString*)endState {    
     NSMutableDictionary* startEndMap = nil;
     
     startEndMap = [self.transitions objectForKey:event];
@@ -33,7 +33,7 @@
     [startEndMap setObject:endState forKey:startState];
 }
 
-- (void)applyEvent:(NSString*)event { 
+- (void)applyEvent:(const NSString*)event { 
     BOOL valid = NO;
     
     NSDictionary* startEndMap = [self.transitions objectForKey:event];
@@ -50,8 +50,8 @@
     }
 }
         
-- (BOOL)isInState:(NSString *)state {
-    return [state isEqualToString:self.state];
+- (BOOL)isInState:(const NSString *)state {
+    return self.state == state;
 }
 
 @end
